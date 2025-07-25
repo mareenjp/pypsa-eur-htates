@@ -1,0 +1,45 @@
+scenario:
+  clusters:
+  - 1
+  sector_opts:
+  - 3H
+  planning_horizons:
+  - 2025
+
+countries: ['NL'] #, 'BE', 'DE', 'NO', 'DK', 'GB'
+
+snapshots:
+  start: "2013-01-01"
+  end: "2014-01-01"
+
+enable:
+  retrieve: true
+
+electricity:
+  powerplants_filter: (DateOut >= 2024 or DateOut != DateOut) and not (Country == 'Germany' and Fueltype == 'Nuclear') and not (Name.str.contains("Borssele") and Fueltype == "Hard Coal")
+  custom_powerplants: true
+  extendable_carriers:
+    Generator: [solar, solar-hsat, onwind, offwind-ac, offwind-dc, offwind-float, OCGT, CCGT, geothermal, nuclear]
+
+sector:
+  district_heating:
+    ptes:
+      dynamic_capacity: true
+  tes: true
+  ht_ates: false
+  gas_network: true
+
+costs:
+  marginal_cost:
+  central HTATES charger: 0.035
+
+enable:
+  retrieve_cost_data: false
+  build_cutout: false
+  retrieve_cutout: true
+
+solving:
+  solver:
+    name: gurobi
+    options: gurobi-default
+  mem_mb: 50000 #memory in MB

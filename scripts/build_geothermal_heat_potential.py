@@ -179,6 +179,7 @@ def get_heat_source_power(
         "ME",
         "MK",
         "XK",
+        "NO" # Test
     ]
 
     if not non_covered_regions.empty:

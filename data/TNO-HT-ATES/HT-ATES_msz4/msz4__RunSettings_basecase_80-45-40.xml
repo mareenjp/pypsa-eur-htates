@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project ATES="true">
+    <return_temperature>35.0</return_temperature>
+    <technical_lifetime>45.0</technical_lifetime>
+    <allowed_delta_t_fraction>60.0</allowed_delta_t_fraction>
+</project>

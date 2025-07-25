@@ -97,6 +97,7 @@ plotting:
     - methanol
     - oil
     - urban central water tanks
+    - urban central ht_ates
   balance_map:
     bus_carriers:
     - AC
@@ -423,6 +424,12 @@ plotting:
     urban central water pits: "#d96f4c"
     urban central water pits charger: "#a85d47"
     urban central water pits discharger: "#b36452"
+    ht_ates: '#7fc2c1'
+    ht_ates charger: '#008f95'
+    ht_ates discharger: '#c5cfd8'
+    urban central ht_ates: '#d8cec5'
+    urban central ht_ates charger: '#dc9e82'
+    urban central ht_ates discharger: '#c16e70'
     # heat demand
     Heat load: '#cc1f1f'
     heat: '#cc1f1f'

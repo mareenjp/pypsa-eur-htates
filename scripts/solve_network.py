@@ -840,11 +840,11 @@ def add_TES_energy_to_power_ratio_constraints(n: pypsa.Network) -> None:
         If the TES storage and charger indices do not align.
     """
     indices_charger_p_nom_extendable = n.links.index[
-        n.links.index.str.contains("water tanks charger|water pits charger")
+        n.links.index.str.contains("water tanks charger|water pits charger|ht_ates charger")
         & n.links.p_nom_extendable
     ]
     indices_stores_e_nom_extendable = n.stores.index[
-        n.stores.index.str.contains("water tanks|water pits")
+        n.stores.index.str.contains("water tanks|water pits|ht_ates")
         & n.stores.e_nom_extendable
     ]
 
@@ -902,11 +902,11 @@ def add_TES_charger_ratio_constraints(n: pypsa.Network) -> None:
         If the charger and discharger indices do not align.
     """
     indices_charger_p_nom_extendable = n.links.index[
-        n.links.index.str.contains("water tanks charger|water pits charger")
+        n.links.index.str.contains("water tanks charger|water pits charger|ht_ates charger")
         & n.links.p_nom_extendable
     ]
     indices_discharger_p_nom_extendable = n.links.index[
-        n.links.index.str.contains("water tanks discharger|water pits discharger")
+        n.links.index.str.contains("water tanks discharger|water pits discharger|ht_ates discharger")
         & n.links.p_nom_extendable
     ]
 
@@ -1175,7 +1175,7 @@ def extra_functionality(
     ):
         add_solar_potential_constraints(n, config)
 
-    if n.config.get("sector", {}).get("tes", False):
+    if n.config.get("sector", {}).get("tes", False) or n.config.get("sector", {}).get("ht_ates", False):
         if n.buses.index.str.contains(
             r"urban central heat|urban decentral heat|rural heat",
             case=False,
@@ -1183,7 +1183,7 @@ def extra_functionality(
         ).any():
             add_TES_energy_to_power_ratio_constraints(n)
             add_TES_charger_ratio_constraints(n)
-
+    
     add_battery_constraints(n)
     add_lossy_bidirectional_link_constraints(n)
     add_pipe_retrofit_constraint(n)

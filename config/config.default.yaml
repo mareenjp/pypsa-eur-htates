@@ -483,6 +483,7 @@ sector:
       dynamic_capacity: true
       max_top_temperature: 90
       min_bottom_temperature: 35
+    dh_area_buffer: 1000
     heat_source_cooling: 6 #K
     heat_pump_cop_approximation:
       refrigerant: ammonia
@@ -606,6 +607,9 @@ sector:
   tes_tau:
     decentral: 3
     central: 180
+  ptes_countries: ['AL', 'AT', 'BA', 'BE', 'BG', 'CH', 'CZ', 'DE', 'DK', 'EE', 'ES', 'FI', 'FR', 'GB', 'GR', 'HR', 'HU', 'IE', 'IT', 'LT', 'LU', 'LV', 'ME', 'MK', 'NO', 'PL', 'PT', 'RO', 'RS', 'SE', 'SI', 'SK', 'XK']
+  ht_ates: false  # toggle HT-ATES on or off
+  ht_ates_tau: 120
   boilers: true
   resistive_heaters: true
   oil_boilers: false
@@ -884,6 +888,7 @@ costs:
     home battery storage: 0
     water tank charger: 0.03
     central water pit charger: 0.025
+    central HTATES charger: 0.035
   emission_prices:
     enable: false
     co2: 0.

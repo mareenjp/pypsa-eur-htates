@@ -78,3 +78,19 @@ merger-todos.md
 *.html
 # private dev folder
 dev/*
+
+# Addition:
+corine.tif
+# Exceptions: keep these
+!data/TNO-HT-ATES/
+!data/custom_powerplants.csv
+!data/dh_areas.gpkg
+
+!config/
+!rules/
+!scripts/
+!Notebooks/
+!run_configs.py
+!.gitignore
+!config_nl_htates.yaml
+!config_heat_demand.yaml

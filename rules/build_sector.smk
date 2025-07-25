@@ -1170,6 +1170,24 @@ def input_heat_source_power(w):
         ).keys()
     }
 
+rule determine_ht_ates_availability:
+    params:
+        dh_area_buffer=config_provider(
+            "sector","district_heating","dh_area_buffer"),
+        countries=config_provider("countries"),
+    input:
+        regions=lambda wildcards: resources(f"regions_onshore_base_s_{wildcards.clusters}.geojson"),
+        htates_ms_potential="data/TNO-HT-ATES/HT-ATES-potential/-Total_Formation_ms.shp",
+        htates_oo_potential="data/TNO-HT-ATES/HT-ATES-potential/-Total_Formation_oo.shp",
+        energy_out_msz2="data/TNO-HT-ATES/HT-ATES_msz2/msz2__energy_out_P50_basecase_80-45-40.asc",
+        energy_out_msz3="data/TNO-HT-ATES/HT-ATES_msz3/msz3__energy_out_P50_basecase_80-45-40.asc",
+        energy_out_msz4="data/TNO-HT-ATES/HT-ATES_msz4/msz4__energy_out_P50_basecase_80-45-40.asc",
+        energy_out_ooz2="data/TNO-HT-ATES/HT-ATES_ooz2/ooz2__energy_out_P50_basecase_80-45-40.asc",
+        dh_areas="data/dh_areas.gpkg",
+    output:
+        htates_potentials=resources("htates_potentials_base_s_{clusters}_{planning_horizons}.csv"),
+    script:
+        "../scripts/determine_ht_ates_availability.py"
 
 rule prepare_sector_network:
     params:
@@ -1201,6 +1219,7 @@ rule prepare_sector_network:
         limited_heat_sources=config_provider(
             "sector", "district_heating", "limited_heat_sources"
         ),
+        ht_ates=config_provider("sector", "ht_ates"),
     input:
         unpack(input_profile_offwind),
         unpack(input_heat_source_power),
@@ -1309,6 +1328,11 @@ rule prepare_sector_network:
         ),
         direct_heat_source_utilisation_profiles=resources(
             "direct_heat_source_utilisation_profiles_base_s_{clusters}_{planning_horizons}.nc"
+        ),
+        htates_potentials=lambda w: (
+            resources("htates_potentials_base_s_{clusters}_{planning_horizons}.csv")
+            if config_provider("sector", "ht_ates")(w)
+            else []
         ),
     output:
         resources(

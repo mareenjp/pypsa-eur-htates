@@ -8,7 +8,7 @@
 if "snakemake" in globals():
     filename = snakemake.output[0]  # noqa: F821
 else:
-    filename = "../config/scenarios.yaml"
+    filename = r"C:\Users\Johannes\PypsaProject\pypsa-eur-htates\config\scenarios.yaml"
 
 import itertools
 
@@ -16,15 +16,19 @@ import itertools
 # Change `config_section` and `config_section2` to the actual config sections.
 template = """
 scenario{scenario_number}:
-    config_section:
+    planning_horizons:
         config_key: {config_value}
-    config_section2:
+    dh_area_buffer:
         config_key2: {config_value2}
+    ht_ates:
+        config_key3: {config_value3}
+    central HTATES charger:
+        config_key4: {config_value4}
 """
 
 # Define all possible combinations of config values.
 # This must define all config values that are used in the template.
-config_values = dict(config_value=["true", "false"], config_value2=[1, 2, 3, 4])
+config_values = dict(config_value=[2030, 2050], config_value2=[750, 1000, 1250], config_value3=["true", "false"], config_value4=[0.02625, 0.035, 0.04375])
 
 combinations = [
     dict(zip(config_values.keys(), values))
