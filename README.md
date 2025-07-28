@@ -1,6 +1,6 @@
 # Code for the master thesis "The potential role of high temperature aquifer thermal energy storage in the Dutch energy"
 
-This repository is a fork of [PyPSA-Eur](https://github.com/PyPSA/pypsa-eur), extended to integrate high-temperature aquifer thermal energy storage (HT-ATES) in the Netherlands. This repository contains the code and report accompanying the master thesis "The potential role of high temperature aquifer thermal energy storage in the Dutch energy".
+This repository is a fork of [PyPSA-Eur](https://github.com/PyPSA/pypsa-eur), extended to integrate high-temperature aquifer thermal energy storage (HT-ATES) in the Netherlands. This repository contains the code and report accompanying the master thesis "The potential role of high temperature aquifer thermal energy storage in the Dutch energy" ([Download report (PDF)](Master_thesis.pdf)).
 
 ## What's modified
 
