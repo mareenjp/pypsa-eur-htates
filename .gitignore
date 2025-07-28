@@ -90,6 +90,7 @@ corine.tif
 !rules/
 !scripts/
 !Notebooks/
+!Notebooks/**.ipynb
 !run_configs.py
 !.gitignore
 !config_nl_htates.yaml
