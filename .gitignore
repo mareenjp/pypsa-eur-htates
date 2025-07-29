@@ -85,6 +85,8 @@ corine.tif
 !data/TNO-HT-ATES/
 !data/custom_powerplants.csv
 !data/dh_areas.gpkg
+!resources/costs_2030.csv
+!resources/costs_2050.csv
 
 !config/
 !rules/
