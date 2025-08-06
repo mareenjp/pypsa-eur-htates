@@ -13,7 +13,7 @@ Compared to the original PyPSA-Eur repository (updated last on 28 May 2025), thi
   -  `data/custom_powerplants.csv`, to account for a bug that mislabeled the nuclear power plant in Borssele as a coal power plant.
   -  `resources/costs_2030.csv` with HT-ATES technology and cost data, for which the sources can be found in the thesis report.
 - **Configuration files**:
-  - `config_HT-ATES.yaml`, which used to model different scenarios with and without HT-ATES.
+  - `config_HT-ATES.yaml`, which is used to model different scenarios with and without HT-ATES.
   - `config.default.yaml` with the necessary additions for HT-ATES.
 - **New script**: `scripts/determine_ht_ates_availability.py` where the potential energy production of HT-ATES is calculated for each cluster.
 - **Modified scripts and rules**:
